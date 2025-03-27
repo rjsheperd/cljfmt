@@ -3,6 +3,7 @@
 set -euo pipefail
 
 VERSION=0.13.0
+INSTALL_DIR=${1:-/usr/local/bin}
 
 case $(uname -s) in
     Linux*)
@@ -37,7 +38,7 @@ echo -n "Downloading cljfmt binaries... "
 curl -o /tmp/cljfmt.tar.gz -sL "$URL"
 echo "Done!"
 
-sudo tar -xzf /tmp/cljfmt.tar.gz -C /usr/local/bin
-echo "Extracted cljfmt into /usr/local/bin"
+tar -xzf /tmp/cljfmt.tar.gz -C "$INSTALL_DIR"
+echo "Extracted cljfmt into $INSTALL_DIR"
 
 rm /tmp/cljfmt.tar.gz
